@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.header{
+    display: flex;
+    height: min-content;
+    justify-content: center;
+    align-items: center;
+    background-color: grey;
+}
+
+.header_in{
+    width: 50%;
+    background-color: grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

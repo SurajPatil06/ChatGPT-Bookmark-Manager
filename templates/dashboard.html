@@ -15,6 +15,26 @@
             <h2>User Dashboard</h2>
             <p><b>Name : </b>{{user.name}}</p>
             <a href="/logout" class="btn btn-dark">Logout</a>
+            <div>
+                <form action="/dashboard" method="post">
+                    <input type="text" placeholder="Topic Name" required name="topic">
+                    <input type="url" placeholder="Url" required name="url">
+                    <button class="btn btn-dark" type="submit">Add</button>
+                </form>
+                <div>
+                    {% for key, value in topics.items() %}
+                        <div class="topics d-flex align-items-center mb-2">
+                            <a href="{{ value }}" target="_blank" class="me-2">{{ key }}</a>
+                            <form action="/dashboard" method="post" style="display:inline;">
+                                <button class="btn btn-danger btn-sm" type="submit" name="remove" value="{{ key }}">
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
         </div>
     </div>
 

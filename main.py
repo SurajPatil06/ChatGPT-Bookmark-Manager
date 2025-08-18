@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
+from sqlalchemy.ext.mutable import MutableDict
 
 
 app = Flask(__name__)
@@ -13,19 +14,19 @@ class User(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
+    topic = db.Column(MutableDict.as_mutable(db.JSON), default=dict)
     
     def __init__(self, email, password, name):
         self.name = name
         self.email = email
         self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        
 
     def check_password(self, password):
         return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
 
 with app.app_context():
     db.create_all()
-
-
 
 @app.route('/')
 def index():
@@ -65,13 +66,30 @@ def login():
 
     return render_template('/login.html')
 
-@app.route('/dashboard')
+
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    if session['email']:
-        user = User.query.filter_by(email=session['email']).first()
-        return render_template('dashboard.html', user=user)
+    if 'email' not in session:
+        return redirect('/login')
+
+    user = User.query.filter_by(email=session['email']).first()
+
+    if request.method == 'POST':
+        if "remove" in request.form:
+            topic_to_remove = request.form["remove"]
+            if topic_to_remove in user.topic:
+                del user.topic[topic_to_remove]
+                db.session.commit()
+        else:
+            topic = request.form['topic']
+            url = request.form['url']
+            if not user.topic:
+                user.topic = {}
+
+            user.topic[topic] = url
+            db.session.commit()
     
-    return redirect('/login')
+    return render_template('dashboard.html', user=user, topics=user.topic)
 
 
 @app.route('/logout')

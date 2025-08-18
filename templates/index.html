@@ -4,18 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/style.css">
-    <title>ChatMark</title>
+    <title>ChatMark - Save Your AI Conversations</title>
     <link rel="icon" type="image/x-icon" href="static/pngs/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <div class="header_in">
-            <img src="static/pngs/logo.png" width="100px" height="100px" >
-            <a href="/login" class="btn btn-primary">Login</a>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark px-4">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="static/pngs/logo.png" alt="ChatMark Logo" width="50" height="50" class="me-2">
+            <span class="fw-bold">ChatMark</span>
+        </a>
+        <div class="ms-auto">
+            <a href="/login" class="btn btn-outline-light me-2">Login</a>
+            <a href="/register" class="btn btn-primary">Get Started</a>
         </div>
-    </div>
+    </nav>
+
+
+    <section class="text-center py-5 bg-light">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Save & Organize Your ChatGPT Conversations</h1>
+            <p class="lead mt-3">Never lose track of important AI chats again. Store, categorize, and revisit your conversations in one place.</p>
+            <a href="/register" class="btn btn-primary btn-lg mt-3">Start for Free</a>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <h3>📌 Bookmark Chats</h3>
+                    <p>Easily save important ChatGPT links and return to them anytime.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>📂 Organize</h3>
+                    <p>Sort conversations into categories or folders for quick access.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>🔍 Quick Search</h3>
+                    <p>Find the right chat instantly with powerful search and filters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center bg-dark text-white py-5">
+        <h2 class="fw-bold">Ready to organize your AI conversations?</h2>
+        <a href="/register" class="btn btn-light btn-lg mt-3">Join ChatMark</a>
+    </section>
+
+
+    <footer class="text-center py-3 bg-light">
+        <p class="mb-0">&copy; 2025 ChatMark. All rights reserved.</p>
+    </footer>
 </body>
 </html>

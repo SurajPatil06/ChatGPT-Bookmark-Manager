@@ -1,0 +1,56 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 40px;
+}
+
+h2 {
+    font-weight: 600;
+    color: #343a40;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.form-control {
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+form.add-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.topics {
+    background: #f1f3f5;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.topics:hover {
+    background: #e9ecef;
+    transform: scale(1.01);
+}
+
+.topics a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #212529;
+}
+
+.btn-danger {
+    border-radius: 6px;
+}

@@ -6,26 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="static/css/dashboard.css" rel="stylesheet">
+
 </head>
 <body>
 
-<div class="container mt-3">
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-8">
-            <h2>User Dashboard</h2>
-            <p><b>Name : </b>{{user.name}}</p>
-            <a href="/logout" class="btn btn-dark">Logout</a>
-            <div>
-                <form action="/dashboard" method="post">
-                    <input type="text" placeholder="Topic Name" required name="topic">
-                    <input type="url" placeholder="Url" required name="url">
+        <div class="col-md-8">
+            <div class="dashboard-container">
+                <h2>User Dashboard</h2>
+                <div class="user-info">
+                    <p><b>Name:</b> {{user.name}}</p>
+                    <a href="/" class="btn btn-outline-dark btn-sm">Logout</a>
+                </div>
+                
+                <form class="add-form" action="/dashboard" method="post">
+                    <input type="text" class="form-control" placeholder="Topic Name" required name="topic">
+                    <input type="url" class="form-control" placeholder="Url" required name="url">
                     <button class="btn btn-dark" type="submit">Add</button>
                 </form>
+
                 <div>
                     {% for key, value in topics.items() %}
-                        <div class="topics d-flex align-items-center mb-2">
-                            <a href="{{ value }}" target="_blank" class="me-2">{{ key }}</a>
-                            <form action="/dashboard" method="post" style="display:inline;">
+                        <div class="topics d-flex justify-content-between align-items-center mb-2">
+                            <a href="{{ value }}" target="_blank">{{ key }}</a>
+                            <form action="/dashboard" method="post" style="margin:0;">
                                 <button class="btn btn-danger btn-sm" type="submit" name="remove" value="{{ key }}">
                                     Remove
                                 </button>
@@ -33,11 +39,9 @@
                         </div>
                     {% endfor %}
                 </div>
-
             </div>
         </div>
     </div>
-
 </div>
 
 </body>
